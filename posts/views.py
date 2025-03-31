@@ -9,3 +9,6 @@ def index(request):
         'posts':posts,
     }
     return render(request, 'index.html', context)
+
+def create(request):
+    pass

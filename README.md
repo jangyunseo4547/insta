@@ -31,3 +31,7 @@ urlpatterns = [
     path('posts/', include('posts.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) #concat / 경로 - 저장한 실제 위치
 ```
+
+## 모듈화 
+`_card.html`
+`_nav.html`
