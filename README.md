@@ -9,7 +9,8 @@ app : posts
 - image/ 
 
 ## 새로운 라이브러리 추가 시  
-`pip freeze >> requirements.txt`
+`pip freeze >> requirements.txt` : 추가 
+`pip freeze > requirements.txt` : 꺽쇠를 한번만 하면 이전거에 덮어쓰여짐.
 
 ## MEDIA 경로 설정
 `settings.py`
@@ -42,3 +43,5 @@ urlpatterns = [
 
 # -> FILES에 저장됨.
 ```
+
+## db 지우고 모델 -> 마이그레션하기
