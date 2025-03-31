@@ -35,3 +35,10 @@ urlpatterns = [
 ## 모듈화 
 `_card.html`
 `_nav.html`
+
+## 파일 설정 시 
+```python 
+<form action="" method="POST" enctype="multipart/form-data"> #enctype 설정해줘야 함.
+
+# -> FILES에 저장됨.
+```
