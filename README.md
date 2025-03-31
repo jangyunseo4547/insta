@@ -49,3 +49,5 @@ urlpatterns = [
 
 
 ## django_session : 사용자 정보가 담김.
+
+## timesince
