@@ -47,3 +47,5 @@ urlpatterns = [
 
 ## db 지우고 모델 -> 마이그레션하기
 
+
+## django_session : 사용자 정보가 담김.
