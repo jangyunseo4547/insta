@@ -1,5 +1,6 @@
 from django.db import models
 from django_resized import ResizedImageField
+from django.conf import settings
 
 # Create your models here.
 class Post(models.Model):
@@ -11,3 +12,4 @@ class Post(models.Model):
         crop = ['middle', 'center'], # 가운데 기준 크롭
         upload_to = 'image/%Y/%m', # 연도와 월을 기준으로 폴더를 만듦.
     )
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete = models.CASCADE)

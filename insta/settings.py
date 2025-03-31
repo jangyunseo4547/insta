@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'posts',
     "django_bootstrap5",
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -129,3 +130,6 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 # image 폴더로 들어오기까지의 (경로)
 MEDIA_URL = '/media/'
+
+# django 유저가 아닌 만든 유저 쓰겠다 명시
+AUTH_USER_MODEL = 'accounts.User'

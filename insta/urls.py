@@ -22,5 +22,7 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('posts/', include('posts.urls')),
+    path('accounts/', include('accounts.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) #concat / 경로 - 저장한 실제 위치
+
 
