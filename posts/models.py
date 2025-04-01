@@ -3,6 +3,8 @@ from django_resized import ResizedImageField
 from django.conf import settings
 
 # Create your models here.
+
+# 게시글
 class Post(models.Model):
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add = True)
@@ -13,3 +15,9 @@ class Post(models.Model):
         upload_to = 'image/%Y/%m', # 연도와 월을 기준으로 폴더를 만듦.
     )
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete = models.CASCADE)
+
+# 댓글
+class Comment(models.Model):
+    content = models.CharField(max_length=200)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)

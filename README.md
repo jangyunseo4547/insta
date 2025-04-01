@@ -51,6 +51,7 @@ urlpatterns = [
 ## django_session : 사용자 정보가 담김.
 
 ## timesince : 몇초 전 
+`_card.html` : |timesince
 
 ## div.row
 - col-12 : 12개의 칸으로 나눠짐.
