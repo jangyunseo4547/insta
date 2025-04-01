@@ -10,4 +10,5 @@ urlpatterns = [
 
     # profile
     path('<username>/', views.profile, name='profile'),
+    path('<username>/follow/', views.follow, name='follow'),
 ]
