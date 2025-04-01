@@ -14,7 +14,14 @@ class Post(models.Model):
         crop = ['middle', 'center'], # 가운데 기준 크롭
         upload_to = 'image/%Y/%m', # 연도와 월을 기준으로 폴더를 만듦.
     )
+    # 작성자 연결
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete = models.CASCADE)
+    
+    # 좋아요를 누른 사람 연결
+    like_users = models.ManyToManyField(
+        settings.AUTH_USER_MODEL, 
+        related_name='like_posts',
+        ) # User와 Post를 M:N으로 연결
 
 # 댓글
 class Comment(models.Model):

@@ -59,4 +59,14 @@ urlpatterns = [
 - <div class="row"> : 가로로 길게 해줌.
 - wrapper_class='' : 위아래 간격 맞추기
 
+## 관계설정 다대다 (M:N)
+- User - Like (user_id, post_id) - Post 
+- error 
+```python
+Reverse accessor 'User.post_set' 
+#post_set(FK)와 post_set(MMF)가 충돌(중복)
+# -> post_set => like_posts(MMF)로 post_set 이름을 바꿔줌.
+
+'posts.Post.like_users'이라는 또 다른 게 만들어지려고 함.
+```
 
