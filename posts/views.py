@@ -40,3 +40,22 @@ def comment_create(request, post_id):
         comment.post_id = post_id # 댓글 달 게시글 찾기
         comment.save()
         return redirect('posts:index')
+
+@login_required
+def like(request, post_id):
+    user = request.user
+    post = Post.objects.get(id=post_id)
+
+#1) 유저 관점
+    if user in post.like_users.all(): # 좋아요가 눌려 있으면 좋아요 제거
+        post.like_users.remove(user)   
+    else:
+        post.like_users.add(user) # 좋아요 눌리지 않으면 누르기
+    
+    return redirect('posts:index')
+
+#2) 게시글 관점
+    # if post in user.like_posts.all():
+    #     user.like_posts.remove(post)
+    # else:
+    #     user.like_posts.add(post)
