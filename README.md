@@ -77,3 +77,8 @@ Reverse accessor 'User.post_set'
 
 ## Responsive image 
 - class="img-fluid"> : 사용자가 줄이면 이미지가 줄어듦. 
+- class='rounded-circle' : 둥글게
+
+## 팔로우 기능 구현
+- User --- User 연결
+    - 일방적인 팔로우 가능 (단방향)
