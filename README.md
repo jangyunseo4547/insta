@@ -70,7 +70,10 @@ Reverse accessor 'User.post_set'
 'posts.Post.like_users'이라는 또 다른 게 만들어지려고 함.
 ```
 
+## 좋아요 기능 구현
 `_card.html`
-- 좋아요 기능 
 - <span>{{post.like_users.all|length}}명이 좋아합니다.</span> : span 태그
 - class="text-reset text-decoration-none" : 링크 색을 기본적으로 검정색으로 바꿈. / 링크 언더바를 취소함.
+
+## Responsive image 
+- class="img-fluid"> : 사용자가 줄이면 이미지가 줄어듦. 
