@@ -1,5 +1,7 @@
-<!-- <div class="card my-3 col-12 col-md-6 col-xl-4"> -->
-  <div class="card my-3 col-12 offset-md-2 col-md-6">
+{% load django_bootstrap5 %}
+
+<div class="card my-3 col-12 col-md-6 col-xl-4">
+  <!-- <div class="card my-3 col-12 offset-md-2 col-md-6"> -->
     <div class="card-header">
         <img class="rounded-circle" src="{{post.user.profile_image.url}}" alt="" width="30px">
         <a href="">{{post.user.username}}</a>
@@ -10,5 +12,20 @@
       <p class="card-text">{{post.content}}</p>
       <p class="card_text">{{post.created_at|timesince}}</p>
       <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+    </div>
+      {% if user.is_authenticated %}
+    <div class="card-footer">
+      <form action="{% url 'posts:comment_create' post.id %}" method="POST">
+        {% csrf_token %}
+        <div class="row">
+          <div class="col-9">
+            {% bootstrap_form form show_label=False wrapper_class='' %}
+          </div>
+          <div class="col-2">
+            <input type="submit" class="btn btn-warning">
+          </div>
+        </div>
+      </form>  
+      {% endif %}
     </div>
   </div>

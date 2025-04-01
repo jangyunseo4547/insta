@@ -56,5 +56,7 @@ urlpatterns = [
 ## div.row
 - col-12 : 12개의 칸으로 나눠짐.
 - xs, sm, md, lg, xl : 크기 설정
+- <div class="row"> : 가로로 길게 해줌.
+- wrapper_class='' : 위아래 간격 맞추기
 
 
