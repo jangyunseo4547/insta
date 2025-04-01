@@ -59,3 +59,15 @@ def like(request, post_id):
     #     user.like_posts.remove(post)
     # else:
     #     user.like_posts.add(post)
+
+def feed(request):
+    followings = request.user.followings.all() # 내가 팔로우 하는 사람들 목록
+    posts = Post.objects.filter(user__in=followings) # 내가 팔로우 하는 사람들이 작성한 게시글
+    
+    form = CommentForm()
+
+    context = {
+        'posts':posts,
+        'form':form,
+    }
+    return render(request, 'index.html', context)
