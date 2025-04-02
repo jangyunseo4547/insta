@@ -61,7 +61,7 @@ def follow(request, username):
 #   if you in me.followings.all():
     if me in you.followers.all():
         you.followers.remove(me)
-        #me.followings.remove(me)
+        #me.followings.remove(you)
     else:
 #        you.followers.add(me)
         me.followings.add(you)

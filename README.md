@@ -82,3 +82,54 @@ Reverse accessor 'User.post_set'
 ## 팔로우 기능 구현
 - User --- User 연결
     - 일방적인 팔로우 가능 (단방향)
+
+## 프론트 엔드 
+- data-*속성 : html에서 data-로 시작하는 사용자 정의 데이터 속성을 만들 수 있음. (javaScript에서 데이터를 저장, 활용하는데 사용)
+- `_card.html`
+```python
+<i class="bi like bi-heart-fill" style="color: red;" data-post-id="{{post.id}}"> # data-post-id : 어느 게시글의 좋아요 버튼인지 구별하기 위해 만든 속성
+```
+
+- `index.html`
+```shell
+<script>
+        # 1. html의 좋아요 버튼(i태그)를 모두 가져옴.
+        let likeBtns = document.querySelectorAll('i.like') 
+        
+        # 2. 좋아요 요청 보내는 함수 만들기
+        let likeRequest = async (btn, postId) => {    # 버튼, 게시글
+            let likeURL = `/posts/${postId}/like-async` 
+            # /posts/1/like-async
+            
+            # 3. 서버에 요청 보내기 & 결과 받기
+            let res = await fetch(likeURL) # 서버에 요청 (좋아요 누름)
+            let result = await res.json() # 서버가 응답을 보내주면, json 데이터로 바꿈.
+
+            # 4. 좋아요 상태에 따라 버튼 스타일 변경 
+            if (result.status) {   # 좋아요가 눌러졌을 경우
+                btn.style.color = 'red'
+                btn.classList.remove('bi-heart')
+                btn.classList.add('bi-heart-fill')
+                
+            } else {               # 좋아요가 취소된 경우
+                btn.style.color = 'black'
+                btn.classList.remove('bi-heart-fill')
+                btn.classList.add('bi-heart')
+            } 
+            # 5. 좋아요 개수 자동 업데이트 
+            btn.querySelector('span').innerHTML = result.count # i태그 안에 있는 span을 찾아 좋아요 숫자 업데이트
+        }    
+
+        # 6. 클릭 이벤트 추가
+        likeBtns.forEach(function(likeBtn){ # 모든 좋아요 버튼에 대해 클릭 이벤트 추가
+            likeBtn.addEventListener('click', function(e){
+                const postId = e.target.dataset.postId   # 눌린 버튼의 data-post-id 값을 가져옴.
+
+                likeRequest(likeBtn, postId) # 가져온 id를 이용해 좋아요 요청 함수 실행
+            })
+        })
+
+
+    </script>
+```
+

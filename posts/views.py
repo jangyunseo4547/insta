@@ -2,6 +2,8 @@ from django.shortcuts import render,redirect
 from .models import Post,Comment
 from .forms import PostForm, CommentForm
 from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse       # dict 주면 ---> json으로 바꿔줌
+
 # Create your views here.
 
 def index(request):
@@ -61,8 +63,8 @@ def like(request, post_id):
     #     user.like_posts.add(post)
 
 def feed(request):
-    followings = request.user.followings.all() # 내가 팔로우 하는 사람들 목록
-    posts = Post.objects.filter(user__in=followings) # 내가 팔로우 하는 사람들이 작성한 게시글
+    followings = request.user.followings.all() # 내가 팔로잉 하는 사람들 목록
+    posts = Post.objects.filter(user__in=followings) # 내가 팔로잉 하는 사람들이 작성한 게시글
     
     form = CommentForm()
 
@@ -71,3 +73,25 @@ def feed(request):
         'form':form,
     }
     return render(request, 'index.html', context)
+
+# 자바 스크립트 : 좋아요 기능
+
+def like_async(request, id):
+    user = request.user
+    post = Post.objects.get(id=id)
+
+    if user in post.like_users.all():
+        post.like_users.remove(user)
+        status = False
+    else:
+        post.like_users.add(user)
+        status = True
+
+    context = {
+        'post_id': id,
+        'status': status,
+        'count': len(post.like_users.all())
+    }
+    return JsonResponse(context)
+
+
