@@ -25,7 +25,10 @@ SECRET_KEY = 'django-insecure-fst2_uf#=z8(!q^6vlf-1lh%r554pld+#rp+d70xhbv45^*_yy
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '.compute.amazonaws.com',     # 화이트리스트 처리 (도메인 접근 허용 공간)
+    '*',
+]
 
 
 # Application definition

@@ -18,11 +18,13 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static # url이 들어올때 어느 경로로 가야 하는지
 from django.conf import settings
+from posts import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('posts/', include('posts.urls')),
     path('accounts/', include('accounts.urls')),
+    path('', views.index)
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) #concat / 경로 - 저장한 실제 위치
 
 
