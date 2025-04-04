@@ -133,3 +133,5 @@ Reverse accessor 'User.post_set'
     </script>
 ```
 
+requirements 추가 
+
